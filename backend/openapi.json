@@ -1,0 +1,3861 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "app",
+    "version": "0.0.1",
+    "description": "",
+    "contact": {
+      "name": "Dmitry Polevyk",
+      "email": "dmitrii.polevyk@acropolium.com"
+    }
+  },
+  "paths": {
+    "/addresses/count": {
+      "get": {
+        "x-controller-name": "AddressController",
+        "x-operation-name": "count",
+        "tags": [
+          "AddressController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Address model count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Address.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Address>"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "AddressController.count"
+      }
+    },
+    "/addresses/{id}": {
+      "put": {
+        "x-controller-name": "AddressController",
+        "x-operation-name": "replaceById",
+        "tags": [
+          "AddressController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Address PUT success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Address"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "AddressController.replaceById"
+      },
+      "patch": {
+        "x-controller-name": "AddressController",
+        "x-operation-name": "updateById",
+        "tags": [
+          "AddressController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Address PATCH success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddressPartial"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "AddressController.updateById"
+      },
+      "get": {
+        "x-controller-name": "AddressController",
+        "x-operation-name": "findById",
+        "tags": [
+          "AddressController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Address model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddressWithRelations"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Address.Filter"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "AddressController.findById"
+      },
+      "delete": {
+        "x-controller-name": "AddressController",
+        "x-operation-name": "deleteById",
+        "tags": [
+          "AddressController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Address DELETE success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "AddressController.deleteById"
+      }
+    },
+    "/addresses": {
+      "post": {
+        "x-controller-name": "AddressController",
+        "x-operation-name": "create",
+        "tags": [
+          "AddressController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Address model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Address"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewAddress"
+              }
+            }
+          }
+        },
+        "operationId": "AddressController.create"
+      },
+      "patch": {
+        "x-controller-name": "AddressController",
+        "x-operation-name": "updateAll",
+        "tags": [
+          "AddressController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Address PATCH success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Address.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Address>"
+                }
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddressPartial"
+              }
+            }
+          }
+        },
+        "operationId": "AddressController.updateAll"
+      },
+      "get": {
+        "x-controller-name": "AddressController",
+        "x-operation-name": "find",
+        "tags": [
+          "AddressController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of Address model instances",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AddressWithRelations"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Address.Filter1"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "AddressController.find"
+      }
+    },
+    "/animals/count": {
+      "get": {
+        "x-controller-name": "AnimalController",
+        "x-operation-name": "count",
+        "tags": [
+          "AnimalController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Animal model count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Animal.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Animal>"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "AnimalController.count"
+      }
+    },
+    "/animals/{id}/species": {
+      "get": {
+        "x-controller-name": "AnimalSpeciesController",
+        "x-operation-name": "getSpecies",
+        "tags": [
+          "AnimalSpeciesController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Species belonging to Animal",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Species"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "AnimalSpeciesController.getSpecies"
+      }
+    },
+    "/animals/{id}": {
+      "put": {
+        "x-controller-name": "AnimalController",
+        "x-operation-name": "replaceById",
+        "tags": [
+          "AnimalController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Animal PUT success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Animal"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "AnimalController.replaceById"
+      },
+      "patch": {
+        "x-controller-name": "AnimalController",
+        "x-operation-name": "updateById",
+        "tags": [
+          "AnimalController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Animal PATCH success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AnimalPartial"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "AnimalController.updateById"
+      },
+      "get": {
+        "x-controller-name": "AnimalController",
+        "x-operation-name": "findById",
+        "tags": [
+          "AnimalController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Animal model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AnimalWithRelations"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Animal.Filter"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "AnimalController.findById"
+      },
+      "delete": {
+        "x-controller-name": "AnimalController",
+        "x-operation-name": "deleteById",
+        "tags": [
+          "AnimalController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Animal DELETE success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "AnimalController.deleteById"
+      }
+    },
+    "/animals": {
+      "post": {
+        "x-controller-name": "AnimalController",
+        "x-operation-name": "create",
+        "tags": [
+          "AnimalController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Animal model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Animal"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewAnimal"
+              }
+            }
+          }
+        },
+        "operationId": "AnimalController.create"
+      },
+      "patch": {
+        "x-controller-name": "AnimalController",
+        "x-operation-name": "updateAll",
+        "tags": [
+          "AnimalController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Animal PATCH success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Animal.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Animal>"
+                }
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AnimalPartial"
+              }
+            }
+          }
+        },
+        "operationId": "AnimalController.updateAll"
+      },
+      "get": {
+        "x-controller-name": "AnimalController",
+        "x-operation-name": "find",
+        "tags": [
+          "AnimalController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of Animal model instances",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AnimalWithRelations"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Animal.Filter1"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "AnimalController.find"
+      }
+    },
+    "/owners/count": {
+      "get": {
+        "x-controller-name": "OwnerController",
+        "x-operation-name": "count",
+        "tags": [
+          "OwnerController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Owner model count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Owner.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Owner>"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "OwnerController.count"
+      }
+    },
+    "/owners/{id}/address": {
+      "post": {
+        "x-controller-name": "OwnerAddressController",
+        "x-operation-name": "create",
+        "tags": [
+          "OwnerAddressController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Owner model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Address"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewAddressInOwner"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "OwnerAddressController.create"
+      },
+      "patch": {
+        "x-controller-name": "OwnerAddressController",
+        "x-operation-name": "patch",
+        "tags": [
+          "OwnerAddressController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Owner.Address PATCH success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          },
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Address.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Address>"
+                }
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddressPartial"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "OwnerAddressController.patch"
+      },
+      "get": {
+        "x-controller-name": "OwnerAddressController",
+        "x-operation-name": "get",
+        "tags": [
+          "OwnerAddressController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Owner has one Address",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Address"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "OwnerAddressController.get"
+      },
+      "delete": {
+        "x-controller-name": "OwnerAddressController",
+        "x-operation-name": "delete",
+        "tags": [
+          "OwnerAddressController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Owner.Address DELETE success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          },
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Address.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Address>"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "OwnerAddressController.delete"
+      }
+    },
+    "/owners/{id}": {
+      "put": {
+        "x-controller-name": "OwnerController",
+        "x-operation-name": "replaceById",
+        "tags": [
+          "OwnerController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Owner PUT success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Owner"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "OwnerController.replaceById"
+      },
+      "patch": {
+        "x-controller-name": "OwnerController",
+        "x-operation-name": "updateById",
+        "tags": [
+          "OwnerController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Owner PATCH success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OwnerPartial"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "OwnerController.updateById"
+      },
+      "get": {
+        "x-controller-name": "OwnerController",
+        "x-operation-name": "findById",
+        "tags": [
+          "OwnerController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Owner model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OwnerWithRelations"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Owner.Filter"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "OwnerController.findById"
+      },
+      "delete": {
+        "x-controller-name": "OwnerController",
+        "x-operation-name": "deleteById",
+        "tags": [
+          "OwnerController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Owner DELETE success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "OwnerController.deleteById"
+      }
+    },
+    "/owners": {
+      "post": {
+        "x-controller-name": "OwnerController",
+        "x-operation-name": "create",
+        "tags": [
+          "OwnerController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Owner model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Owner"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewOwner"
+              }
+            }
+          }
+        },
+        "operationId": "OwnerController.create"
+      },
+      "patch": {
+        "x-controller-name": "OwnerController",
+        "x-operation-name": "updateAll",
+        "tags": [
+          "OwnerController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Owner PATCH success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Owner.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Owner>"
+                }
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OwnerPartial"
+              }
+            }
+          }
+        },
+        "operationId": "OwnerController.updateAll"
+      },
+      "get": {
+        "x-controller-name": "OwnerController",
+        "x-operation-name": "find",
+        "tags": [
+          "OwnerController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of Owner model instances",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/OwnerWithRelations"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Owner.Filter1"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "OwnerController.find"
+      }
+    },
+    "/pets/count": {
+      "get": {
+        "x-controller-name": "PetController",
+        "x-operation-name": "count",
+        "tags": [
+          "PetController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Pet model count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Pet.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Pet>"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "PetController.count"
+      }
+    },
+    "/pets/{id}/owner": {
+      "get": {
+        "x-controller-name": "PetOwnerController",
+        "x-operation-name": "getOwner",
+        "tags": [
+          "PetOwnerController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Owner belonging to Pet",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Owner"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "PetOwnerController.getOwner"
+      }
+    },
+    "/pets/{id}/species": {
+      "get": {
+        "x-controller-name": "PetSpeciesController",
+        "x-operation-name": "getSpecies",
+        "tags": [
+          "PetSpeciesController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Species belonging to Pet",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Species"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "PetSpeciesController.getSpecies"
+      }
+    },
+    "/pets/{id}": {
+      "put": {
+        "x-controller-name": "PetController",
+        "x-operation-name": "replaceById",
+        "tags": [
+          "PetController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Pet PUT success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Pet"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "PetController.replaceById"
+      },
+      "patch": {
+        "x-controller-name": "PetController",
+        "x-operation-name": "updateById",
+        "tags": [
+          "PetController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Pet PATCH success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AnimalPartial"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "PetController.updateById"
+      },
+      "get": {
+        "x-controller-name": "PetController",
+        "x-operation-name": "findById",
+        "tags": [
+          "PetController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Pet model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AnimalWithRelations"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Pet.Filter"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "PetController.findById"
+      },
+      "delete": {
+        "x-controller-name": "PetController",
+        "x-operation-name": "deleteById",
+        "tags": [
+          "PetController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Pet DELETE success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "PetController.deleteById"
+      }
+    },
+    "/pets": {
+      "post": {
+        "x-controller-name": "PetController",
+        "x-operation-name": "create",
+        "tags": [
+          "PetController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Pet model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Animal"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewPet"
+              }
+            }
+          }
+        },
+        "operationId": "PetController.create"
+      },
+      "patch": {
+        "x-controller-name": "PetController",
+        "x-operation-name": "updateAll",
+        "tags": [
+          "PetController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Pet PATCH success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Pet.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Pet>"
+                }
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AnimalPartial"
+              }
+            }
+          }
+        },
+        "operationId": "PetController.updateAll"
+      },
+      "get": {
+        "x-controller-name": "PetController",
+        "x-operation-name": "find",
+        "tags": [
+          "PetController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of Pet model instances",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AnimalWithRelations"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Pet.Filter1"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "PetController.find"
+      }
+    },
+    "/species/count": {
+      "get": {
+        "x-controller-name": "SpeciesController",
+        "x-operation-name": "count",
+        "tags": [
+          "SpeciesController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Species model count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Species.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Species>"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "SpeciesController.count"
+      }
+    },
+    "/species/{id}": {
+      "put": {
+        "x-controller-name": "SpeciesController",
+        "x-operation-name": "replaceById",
+        "tags": [
+          "SpeciesController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Species PUT success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Species"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "SpeciesController.replaceById"
+      },
+      "patch": {
+        "x-controller-name": "SpeciesController",
+        "x-operation-name": "updateById",
+        "tags": [
+          "SpeciesController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Species PATCH success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SpeciesPartial"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "SpeciesController.updateById"
+      },
+      "get": {
+        "x-controller-name": "SpeciesController",
+        "x-operation-name": "findById",
+        "tags": [
+          "SpeciesController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Species model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SpeciesWithRelations"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Species.Filter"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "SpeciesController.findById"
+      },
+      "delete": {
+        "x-controller-name": "SpeciesController",
+        "x-operation-name": "deleteById",
+        "tags": [
+          "SpeciesController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Species DELETE success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "SpeciesController.deleteById"
+      }
+    },
+    "/species": {
+      "post": {
+        "x-controller-name": "SpeciesController",
+        "x-operation-name": "create",
+        "tags": [
+          "SpeciesController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Species model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Species"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewSpecies"
+              }
+            }
+          }
+        },
+        "operationId": "SpeciesController.create"
+      },
+      "patch": {
+        "x-controller-name": "SpeciesController",
+        "x-operation-name": "updateAll",
+        "tags": [
+          "SpeciesController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Species PATCH success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Species.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Species>"
+                }
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SpeciesPartial"
+              }
+            }
+          }
+        },
+        "operationId": "SpeciesController.updateAll"
+      },
+      "get": {
+        "x-controller-name": "SpeciesController",
+        "x-operation-name": "find",
+        "tags": [
+          "SpeciesController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of Species model instances",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SpeciesWithRelations"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Species.Filter1"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "SpeciesController.find"
+      }
+    },
+    "/wild-animals/count": {
+      "get": {
+        "x-controller-name": "WildAnimalController",
+        "x-operation-name": "count",
+        "tags": [
+          "WildAnimalController"
+        ],
+        "responses": {
+          "200": {
+            "description": "WildAnimal model count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "WildAnimal.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<WildAnimal>"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "WildAnimalController.count"
+      }
+    },
+    "/wild-animals/{id}/species": {
+      "get": {
+        "x-controller-name": "WildAnimalSpeciesController",
+        "x-operation-name": "getSpecies",
+        "tags": [
+          "WildAnimalSpeciesController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Species belonging to WildAnimal",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Species"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "WildAnimalSpeciesController.getSpecies"
+      }
+    },
+    "/wild-animals/{id}": {
+      "put": {
+        "x-controller-name": "WildAnimalController",
+        "x-operation-name": "replaceById",
+        "tags": [
+          "WildAnimalController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "WildAnimal PUT success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WildAnimal"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "WildAnimalController.replaceById"
+      },
+      "patch": {
+        "x-controller-name": "WildAnimalController",
+        "x-operation-name": "updateById",
+        "tags": [
+          "WildAnimalController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "WildAnimal PATCH success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AnimalPartial"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "WildAnimalController.updateById"
+      },
+      "get": {
+        "x-controller-name": "WildAnimalController",
+        "x-operation-name": "findById",
+        "tags": [
+          "WildAnimalController"
+        ],
+        "responses": {
+          "200": {
+            "description": "WildAnimal model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AnimalWithRelations"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WildAnimal.Filter"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "WildAnimalController.findById"
+      },
+      "delete": {
+        "x-controller-name": "WildAnimalController",
+        "x-operation-name": "deleteById",
+        "tags": [
+          "WildAnimalController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "WildAnimal DELETE success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "WildAnimalController.deleteById"
+      }
+    },
+    "/wild-animals": {
+      "post": {
+        "x-controller-name": "WildAnimalController",
+        "x-operation-name": "create",
+        "tags": [
+          "WildAnimalController"
+        ],
+        "responses": {
+          "200": {
+            "description": "WildAnimal model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Animal"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewWildAnimal"
+              }
+            }
+          }
+        },
+        "operationId": "WildAnimalController.create"
+      },
+      "patch": {
+        "x-controller-name": "WildAnimalController",
+        "x-operation-name": "updateAll",
+        "tags": [
+          "WildAnimalController"
+        ],
+        "responses": {
+          "200": {
+            "description": "WildAnimal PATCH success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "WildAnimal.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<WildAnimal>"
+                }
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AnimalPartial"
+              }
+            }
+          }
+        },
+        "operationId": "WildAnimalController.updateAll"
+      },
+      "get": {
+        "x-controller-name": "WildAnimalController",
+        "x-operation-name": "find",
+        "tags": [
+          "WildAnimalController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of WildAnimal model instances",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AnimalWithRelations"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WildAnimal.Filter1"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "WildAnimalController.find"
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000"
+    }
+  ],
+  "components": {
+    "schemas": {
+      "Address": {
+        "title": "Address",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "street": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string"
+          },
+          "zipCode": {
+            "type": "string"
+          },
+          "ownerId": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "street",
+          "city",
+          "country",
+          "zipCode"
+        ],
+        "additionalProperties": true
+      },
+      "NewAddress": {
+        "title": "NewAddress",
+        "type": "object",
+        "description": "(tsType: Omit<Address, 'id'>, schemaOptions: { title: 'NewAddress', exclude: [ 'id' ] })",
+        "properties": {
+          "street": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string"
+          },
+          "zipCode": {
+            "type": "string"
+          },
+          "ownerId": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "street",
+          "city",
+          "country",
+          "zipCode"
+        ],
+        "additionalProperties": true,
+        "x-typescript-type": "Omit<Address, 'id'>"
+      },
+      "AddressWithRelations": {
+        "title": "AddressWithRelations",
+        "type": "object",
+        "description": "(tsType: AddressWithRelations, schemaOptions: { includeRelations: true })",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "street": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string"
+          },
+          "zipCode": {
+            "type": "string"
+          },
+          "ownerId": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "street",
+          "city",
+          "country",
+          "zipCode"
+        ],
+        "additionalProperties": true,
+        "x-typescript-type": "AddressWithRelations"
+      },
+      "AddressPartial": {
+        "title": "AddressPartial",
+        "type": "object",
+        "description": "(tsType: Partial<Address>, schemaOptions: { partial: true })",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "street": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string"
+          },
+          "zipCode": {
+            "type": "string"
+          },
+          "ownerId": {
+            "type": "number"
+          }
+        },
+        "additionalProperties": true,
+        "x-typescript-type": "Partial<Address>"
+      },
+      "Species": {
+        "title": "Species",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "label": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "label"
+        ],
+        "additionalProperties": true
+      },
+      "Animal": {
+        "title": "Animal",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "birthday": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "vaccinated": {
+            "type": "boolean"
+          },
+          "speciesId": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "birthday"
+        ],
+        "additionalProperties": true
+      },
+      "NewAnimal": {
+        "title": "NewAnimal",
+        "type": "object",
+        "description": "(tsType: Omit<Animal, 'id'>, schemaOptions: { title: 'NewAnimal', exclude: [ 'id' ] })",
+        "properties": {
+          "birthday": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "vaccinated": {
+            "type": "boolean"
+          },
+          "speciesId": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "birthday"
+        ],
+        "additionalProperties": true,
+        "x-typescript-type": "Omit<Animal, 'id'>"
+      },
+      "SpeciesWithRelations": {
+        "title": "SpeciesWithRelations",
+        "type": "object",
+        "description": "(tsType: SpeciesWithRelations, schemaOptions: { includeRelations: true })",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "label": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "label"
+        ],
+        "additionalProperties": true,
+        "x-typescript-type": "SpeciesWithRelations"
+      },
+      "AnimalWithRelations": {
+        "title": "AnimalWithRelations",
+        "type": "object",
+        "description": "(tsType: AnimalWithRelations, schemaOptions: { includeRelations: true })",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "birthday": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "vaccinated": {
+            "type": "boolean"
+          },
+          "speciesId": {
+            "type": "number"
+          },
+          "species": {
+            "$ref": "#/components/schemas/SpeciesWithRelations"
+          }
+        },
+        "required": [
+          "birthday"
+        ],
+        "additionalProperties": true,
+        "x-typescript-type": "AnimalWithRelations"
+      },
+      "AnimalPartial": {
+        "title": "AnimalPartial",
+        "type": "object",
+        "description": "(tsType: Partial<Animal>, schemaOptions: { partial: true })",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "birthday": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "vaccinated": {
+            "type": "boolean"
+          },
+          "speciesId": {
+            "type": "number"
+          }
+        },
+        "additionalProperties": true,
+        "x-typescript-type": "Partial<Animal>"
+      },
+      "NewAddressInOwner": {
+        "title": "NewAddressInOwner",
+        "type": "object",
+        "description": "(tsType: @loopback/repository-json-schema#Optional<Omit<Address, 'id'>, 'ownerId'>, schemaOptions: { title: 'NewAddressInOwner', exclude: [ 'id' ], optional: [ 'ownerId' ] })",
+        "properties": {
+          "street": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string"
+          },
+          "zipCode": {
+            "type": "string"
+          },
+          "ownerId": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "street",
+          "city",
+          "country",
+          "zipCode"
+        ],
+        "additionalProperties": true,
+        "x-typescript-type": "@loopback/repository-json-schema#Optional<Omit<Address, 'id'>, 'ownerId'>"
+      },
+      "Owner": {
+        "title": "Owner",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "fullName": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "fullName"
+        ],
+        "additionalProperties": true
+      },
+      "NewOwner": {
+        "title": "NewOwner",
+        "type": "object",
+        "description": "(tsType: Omit<Owner, 'id'>, schemaOptions: { title: 'NewOwner', exclude: [ 'id' ] })",
+        "properties": {
+          "fullName": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "fullName"
+        ],
+        "additionalProperties": true,
+        "x-typescript-type": "Omit<Owner, 'id'>"
+      },
+      "OwnerWithRelations": {
+        "title": "OwnerWithRelations",
+        "type": "object",
+        "description": "(tsType: OwnerWithRelations, schemaOptions: { includeRelations: true })",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "fullName": {
+            "type": "string"
+          },
+          "address": {
+            "$ref": "#/components/schemas/AddressWithRelations"
+          }
+        },
+        "required": [
+          "fullName"
+        ],
+        "additionalProperties": true,
+        "x-typescript-type": "OwnerWithRelations"
+      },
+      "OwnerPartial": {
+        "title": "OwnerPartial",
+        "type": "object",
+        "description": "(tsType: Partial<Owner>, schemaOptions: { partial: true })",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "fullName": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true,
+        "x-typescript-type": "Partial<Owner>"
+      },
+      "NewPet": {
+        "title": "NewPet",
+        "type": "object",
+        "description": "(tsType: Omit<Pet, 'id'>, schemaOptions: { title: 'NewPet', exclude: [ 'id' ] })",
+        "properties": {
+          "birthday": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "vaccinated": {
+            "type": "boolean"
+          },
+          "speciesId": {
+            "type": "number"
+          },
+          "ownerId": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "birthday"
+        ],
+        "additionalProperties": true,
+        "x-typescript-type": "Omit<Pet, 'id'>"
+      },
+      "Pet": {
+        "title": "Animal",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "birthday": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "vaccinated": {
+            "type": "boolean"
+          },
+          "speciesId": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "birthday"
+        ],
+        "additionalProperties": true
+      },
+      "NewSpecies": {
+        "title": "NewSpecies",
+        "type": "object",
+        "description": "(tsType: Omit<Species, 'id'>, schemaOptions: { title: 'NewSpecies', exclude: [ 'id' ] })",
+        "properties": {
+          "label": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "label"
+        ],
+        "additionalProperties": true,
+        "x-typescript-type": "Omit<Species, 'id'>"
+      },
+      "SpeciesPartial": {
+        "title": "SpeciesPartial",
+        "type": "object",
+        "description": "(tsType: Partial<Species>, schemaOptions: { partial: true })",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "label": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true,
+        "x-typescript-type": "Partial<Species>"
+      },
+      "NewWildAnimal": {
+        "title": "NewWildAnimal",
+        "type": "object",
+        "description": "(tsType: Omit<WildAnimal, 'id'>, schemaOptions: { title: 'NewWildAnimal', exclude: [ 'id' ] })",
+        "properties": {
+          "birthday": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "vaccinated": {
+            "type": "boolean"
+          },
+          "speciesId": {
+            "type": "number"
+          },
+          "trackingId": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "birthday",
+          "trackingId"
+        ],
+        "additionalProperties": true,
+        "x-typescript-type": "Omit<WildAnimal, 'id'>"
+      },
+      "WildAnimal": {
+        "title": "Animal",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "birthday": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "vaccinated": {
+            "type": "boolean"
+          },
+          "speciesId": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "birthday"
+        ],
+        "additionalProperties": true
+      },
+      "loopback.Count": {
+        "type": "object",
+        "title": "loopback.Count",
+        "x-typescript-type": "@loopback/repository#Count",
+        "properties": {
+          "count": {
+            "type": "number"
+          }
+        }
+      },
+      "Address.Filter": {
+        "type": "object",
+        "title": "Address.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "street": {
+                    "type": "boolean"
+                  },
+                  "city": {
+                    "type": "boolean"
+                  },
+                  "country": {
+                    "type": "boolean"
+                  },
+                  "zipCode": {
+                    "type": "boolean"
+                  },
+                  "ownerId": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "Address.Fields"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<Address>"
+      },
+      "Address.Filter1": {
+        "type": "object",
+        "title": "Address.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "where": {
+            "title": "Address.WhereFilter",
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "street": {
+                    "type": "boolean"
+                  },
+                  "city": {
+                    "type": "boolean"
+                  },
+                  "country": {
+                    "type": "boolean"
+                  },
+                  "zipCode": {
+                    "type": "boolean"
+                  },
+                  "ownerId": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "Address.Fields"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<Address>"
+      },
+      "Animal.ScopeFilter": {
+        "type": "object",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "where": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "uniqueItems": true
+              }
+            ]
+          },
+          "include": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {},
+              "additionalProperties": true
+            }
+          }
+        },
+        "additionalProperties": false,
+        "title": "Animal.ScopeFilter"
+      },
+      "Animal.IncludeFilter.Items": {
+        "title": "Animal.IncludeFilter.Items",
+        "type": "object",
+        "properties": {
+          "relation": {
+            "type": "string"
+          },
+          "scope": {
+            "$ref": "#/components/schemas/Animal.ScopeFilter"
+          }
+        }
+      },
+      "Animal.Filter": {
+        "type": "object",
+        "title": "Animal.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "birthday": {
+                    "type": "boolean"
+                  },
+                  "vaccinated": {
+                    "type": "boolean"
+                  },
+                  "speciesId": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "Animal.Fields"
+          },
+          "include": {
+            "title": "Animal.IncludeFilter",
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/Animal.IncludeFilter.Items"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<Animal>"
+      },
+      "Animal.Filter1": {
+        "type": "object",
+        "title": "Animal.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "where": {
+            "title": "Animal.WhereFilter",
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "birthday": {
+                    "type": "boolean"
+                  },
+                  "vaccinated": {
+                    "type": "boolean"
+                  },
+                  "speciesId": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "Animal.Fields"
+          },
+          "include": {
+            "title": "Animal.IncludeFilter",
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/Animal.IncludeFilter.Items"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<Animal>"
+      },
+      "Owner.ScopeFilter": {
+        "type": "object",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "where": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "uniqueItems": true
+              }
+            ]
+          },
+          "include": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {},
+              "additionalProperties": true
+            }
+          }
+        },
+        "additionalProperties": false,
+        "title": "Owner.ScopeFilter"
+      },
+      "Owner.IncludeFilter.Items": {
+        "title": "Owner.IncludeFilter.Items",
+        "type": "object",
+        "properties": {
+          "relation": {
+            "type": "string"
+          },
+          "scope": {
+            "$ref": "#/components/schemas/Owner.ScopeFilter"
+          }
+        }
+      },
+      "Owner.Filter": {
+        "type": "object",
+        "title": "Owner.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "fullName": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "Owner.Fields"
+          },
+          "include": {
+            "title": "Owner.IncludeFilter",
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/Owner.IncludeFilter.Items"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<Owner>"
+      },
+      "Owner.Filter1": {
+        "type": "object",
+        "title": "Owner.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "where": {
+            "title": "Owner.WhereFilter",
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "fullName": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "Owner.Fields"
+          },
+          "include": {
+            "title": "Owner.IncludeFilter",
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/Owner.IncludeFilter.Items"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<Owner>"
+      },
+      "Pet.ScopeFilter": {
+        "type": "object",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "where": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "uniqueItems": true
+              }
+            ]
+          },
+          "include": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {},
+              "additionalProperties": true
+            }
+          }
+        },
+        "additionalProperties": false,
+        "title": "Pet.ScopeFilter"
+      },
+      "Pet.IncludeFilter.Items": {
+        "title": "Pet.IncludeFilter.Items",
+        "type": "object",
+        "properties": {
+          "relation": {
+            "type": "string"
+          },
+          "scope": {
+            "$ref": "#/components/schemas/Pet.ScopeFilter"
+          }
+        }
+      },
+      "Pet.Filter": {
+        "type": "object",
+        "title": "Pet.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "birthday": {
+                    "type": "boolean"
+                  },
+                  "vaccinated": {
+                    "type": "boolean"
+                  },
+                  "speciesId": {
+                    "type": "boolean"
+                  },
+                  "ownerId": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "Pet.Fields"
+          },
+          "include": {
+            "title": "Pet.IncludeFilter",
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/Pet.IncludeFilter.Items"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<Pet>"
+      },
+      "Pet.Filter1": {
+        "type": "object",
+        "title": "Pet.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "where": {
+            "title": "Pet.WhereFilter",
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "birthday": {
+                    "type": "boolean"
+                  },
+                  "vaccinated": {
+                    "type": "boolean"
+                  },
+                  "speciesId": {
+                    "type": "boolean"
+                  },
+                  "ownerId": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "Pet.Fields"
+          },
+          "include": {
+            "title": "Pet.IncludeFilter",
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/Pet.IncludeFilter.Items"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<Pet>"
+      },
+      "Species.Filter": {
+        "type": "object",
+        "title": "Species.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "label": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "Species.Fields"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<Species>"
+      },
+      "Species.Filter1": {
+        "type": "object",
+        "title": "Species.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "where": {
+            "title": "Species.WhereFilter",
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "label": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "Species.Fields"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<Species>"
+      },
+      "WildAnimal.ScopeFilter": {
+        "type": "object",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "where": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "uniqueItems": true
+              }
+            ]
+          },
+          "include": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {},
+              "additionalProperties": true
+            }
+          }
+        },
+        "additionalProperties": false,
+        "title": "WildAnimal.ScopeFilter"
+      },
+      "WildAnimal.IncludeFilter.Items": {
+        "title": "WildAnimal.IncludeFilter.Items",
+        "type": "object",
+        "properties": {
+          "relation": {
+            "type": "string"
+          },
+          "scope": {
+            "$ref": "#/components/schemas/WildAnimal.ScopeFilter"
+          }
+        }
+      },
+      "WildAnimal.Filter": {
+        "type": "object",
+        "title": "WildAnimal.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "birthday": {
+                    "type": "boolean"
+                  },
+                  "vaccinated": {
+                    "type": "boolean"
+                  },
+                  "speciesId": {
+                    "type": "boolean"
+                  },
+                  "trackingId": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "WildAnimal.Fields"
+          },
+          "include": {
+            "title": "WildAnimal.IncludeFilter",
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/WildAnimal.IncludeFilter.Items"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<WildAnimal>"
+      },
+      "WildAnimal.Filter1": {
+        "type": "object",
+        "title": "WildAnimal.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "where": {
+            "title": "WildAnimal.WhereFilter",
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "birthday": {
+                    "type": "boolean"
+                  },
+                  "vaccinated": {
+                    "type": "boolean"
+                  },
+                  "speciesId": {
+                    "type": "boolean"
+                  },
+                  "trackingId": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "WildAnimal.Fields"
+          },
+          "include": {
+            "title": "WildAnimal.IncludeFilter",
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/WildAnimal.IncludeFilter.Items"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<WildAnimal>"
+      }
+    }
+  }
+}

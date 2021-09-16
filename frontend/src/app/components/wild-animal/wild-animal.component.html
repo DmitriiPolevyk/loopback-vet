@@ -1,0 +1,74 @@
+<div class="container">
+  <div class="reglist">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>#</th>            
+          <th scope="col">birthday</th>
+          <th scope="col">vaccinated</th>
+          <th scope="col">trackingId</th>
+          <th scope="col">species</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let wildAnimal of wildAnimals; let i = index">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>{{ wildAnimal.birthday | date: 'yyyy-mm-dd'}}</td>
+          <td>{{ wildAnimal.vaccinated }}</td>
+          <td>{{ wildAnimal.trackingId }}</td>
+          <td>{{ wildAnimal.species?.label }}</td>
+          <td>
+            <button type="button" class="btn btn-info" (click)="onEdit(i)">Edit</button>
+          </td>
+          <td>
+            <button type="button" class="btn btn-danger" (click)="onDelete(i)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="text-right">
+      <button type="submit" class="btn btn-primary" (click)="onNew()">New</button>
+    </div>
+  </div>
+  <br>
+  <div class="regentry" *ngIf="showNew">
+    <form (ngSubmit)="onSave()">
+      <div class="form-group row">
+        <label for="birthday-input" class="col-2 col-form-label">birthday</label>
+        <div class="col-10">
+          <input class="form-control" placeholder="yyyy-mm-dd" type="text" [(ngModel)]="regModel.birthday" name="birthday">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="vaccinated-input" class="col-2 col-form-label">vaccinated</label>
+        <div class="col-10">
+          <input class="form-control" type="checkbox" [(ngModel)]="regModel.vaccinated" [ngModelOptions]="{standalone: true}">
+        </div>
+      </div> 
+      <div class="form-group row">
+        <label for="trackingId-input" class="col-2 col-form-label">trackingId</label>
+        <div class="col-10">
+          <input class="form-control" type="text" [(ngModel)]="regModel.trackingId" name="trackingId">
+        </div>
+      </div>              
+      <div class="form-group row">
+        <label for="species-input" class="col-2 col-form-label">species</label>
+        <div class="col-10 dropdown" ngbDropdown myDrop="ngbDropdown">
+          <button type="button" class="btn btn-outline-primary" id="dropdownManual" name="species" ngbDropdownToggle>{{regModel.speciesLabel}}
+          </button>
+          <div ngbDropdownMenu aria-labelledby="dropdownManual">
+            <button type="button" class="dropdown-item" *ngFor="let species of specieses" (click)="onChangeSpecies(species)">
+              {{species?.label }}
+            </button>
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-success">{{submitType}}</button>
+      <button type="submit" class="btn btn-primary" (click)="onCancel()">Cancel</button>
+    </form>
+  </div>
+</div>
+
+

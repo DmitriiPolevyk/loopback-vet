@@ -1,0 +1,77 @@
+<div class="container">
+  <div class="reglist">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>#</th>        
+          <th scope="col">fullName</th>    
+          <th scope="col">country</th>
+          <th scope="col">city</th>
+          <th scope="col">street</th>
+          <th scope="col">zipCode</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let ownerWithRelations of ownersWithRelations; let i = index">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>{{ownerWithRelations.fullName}}</td>
+          <td>{{ownerWithRelations.address?.country}}</td>
+          <td>{{ownerWithRelations.address?.city}}</td>
+          <td>{{ownerWithRelations.address?.street}}</td>
+          <td>{{ownerWithRelations.address?.zipCode}}</td>
+          <td>
+            <button type="button" class="btn btn-info" (click)="onEdit(i)">Edit</button>
+          </td>
+          <td>
+            <button type="button" class="btn btn-danger" (click)="onDelete(i)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="text-right">
+      <button type="submit" class="btn btn-primary" (click)="onNew()">New</button>
+    </div>
+  </div>
+  <br>
+  <p class="alert" *ngIf="alert.length > 0">{{alert}}</p>
+  <div class="regentry" *ngIf="showNew">
+    <form (ngSubmit)="onSave()">
+      <div class="form-group row">
+        <label for="fullName-input" class="col-2 col-form-label">fullName</label>
+        <div class="col-10">
+          <input class="form-control" type="text" [(ngModel)]="regModel.fullName" name="fullName">
+        </div>
+      </div>      
+      <div class="form-group row">
+        <label for="country-input" class="col-2 col-form-label">country</label>
+        <div class="col-10">
+          <input class="form-control" type="text" [(ngModel)]="regModel.address.country" name="country">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="city-input" class="col-2 col-form-label">city</label>
+        <div class="col-10">
+          <input class="form-control" type="text" [(ngModel)]="regModel.address.city" name="city">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="street-input" class="col-2 col-form-label">street</label>
+        <div class="col-10">
+          <input class="form-control" type="text" [(ngModel)]="regModel.address.street" name="street">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="zipCode-input" class="col-2 col-form-label">zipCode</label>
+        <div class="col-10">
+          <input class="form-control" type="text" [(ngModel)]="regModel.address.zipCode" name="zipCode">
+        </div>
+      </div>
+      <button type="submit" class="btn btn-success">{{submitType}}</button>
+      <button type="submit" class="btn btn-primary" (click)="onCancel()">Cancel</button>
+    </form>
+  </div>
+</div>
+
+
