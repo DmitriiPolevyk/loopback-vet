@@ -12,7 +12,7 @@ export class WildAnimal extends Animal {
 
   @property({
     type: 'number',
-    required: true,
+    required: false,
   })
   trackingId: number;
 

@@ -12,7 +12,10 @@ export class Animal extends Entity {
 
   @property({
     type: 'date',
-    required: true,
+    required: false,
+    postgresql: {
+      dataType: 'date',
+    },
   })
   birthday: string;
 

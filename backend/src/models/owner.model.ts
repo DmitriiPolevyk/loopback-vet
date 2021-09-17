@@ -13,6 +13,10 @@ export class Owner extends Entity {
   @property({
     type: 'string',
     required: true,
+    postgresql: {
+      dataType: 'character varying',
+      dataLength: 100,
+    },
   })
   fullName: string;
 

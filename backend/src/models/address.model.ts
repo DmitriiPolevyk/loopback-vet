@@ -12,24 +12,40 @@ export class Address extends Entity {
   @property({
     type: 'string',
     required: true,
+    postgresql: {
+      dataType: 'character varying',
+      dataLength: 100,
+    },
   })
   street: string;
 
   @property({
     type: 'string',
     required: true,
+    postgresql: {
+      dataType: 'character varying',
+      dataLength: 100,
+    },    
   })
   city: string;
 
   @property({
     type: 'string',
     required: true,
+    postgresql: {
+      dataType: 'character varying',
+      dataLength: 100,
+    },      
   })
   country: string;
 
   @property({
     type: 'string',
     required: true,
+    postgresql: {
+      dataType: 'character varying',
+      dataLength: 100,
+    },      
   })
   zipCode: string;
 

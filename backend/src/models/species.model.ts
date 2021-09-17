@@ -12,6 +12,10 @@ export class Species extends Entity {
   @property({
     type: 'string',
     required: true,
+    postgresql: {
+      dataType: 'character varying',
+      dataLength: 100,
+    }, 
   })
   label: string;
 
